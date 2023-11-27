@@ -1,0 +1,12 @@
+.is-required {
+    color: #f00
+}
+
+@font-face {
+    font-family: myFirstFont;
+    src: url(../fonts/Almarai-Bold.ttf);
+}
+
+body {
+    font-family: myFirstFont !important
+}
