@@ -73,6 +73,15 @@
       </li>
     @endif
 
+    @can('show_roles')
+        <li class="menu-item @yield('categories')">
+          <a href="{{ route('categories-all') }}" class="menu-link">
+            <i class="fa fa-bolt" aria-hidden="true"></i>&nbsp;&nbsp;
+            <div>{{ transWord('Categories') }}</div>
+          </a>
+        </li>
+    @endcan
+
     @can('update_settings')
       <li class="menu-item @yield('settings')">
         <a href="{{ route('settings-edit') }}" class="menu-link">

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\core\AuthController;
 use App\Http\Controllers\core\PermissionController;
 use App\Http\Controllers\core\ProfileController;
@@ -137,13 +138,24 @@ Route::group(
             // Pages
 
                 // Translates
-                Route::prefix('/translates')->middleware('arabicOnly', 'permission:show_translates')->group(function() {
-                    Route::post('/store', [TranslateController::class, 'store'])->middleware('permission:create_translates')->name('translates-store');
-                    Route::post('/update', [TranslateController::class, 'update'])->middleware('permission:update_translates')->name('translates-update');
-                    Route::get('/edit', [TranslateController::class, 'edit'])->middleware('permission:update_translates')->name('translates-edit');
-                    Route::get('/delete/{id}', [TranslateController::class, 'destroy'])->middleware('permission:delete_translates')->name('translates-delete');
-                });
+                    Route::prefix('/translates')->middleware('arabicOnly', 'permission:show_translates')->group(function() {
+                        Route::post('/store', [TranslateController::class, 'store'])->middleware('permission:create_translates')->name('translates-store');
+                        Route::post('/update', [TranslateController::class, 'update'])->middleware('permission:update_translates')->name('translates-update');
+                        Route::get('/edit', [TranslateController::class, 'edit'])->middleware('permission:update_translates')->name('translates-edit');
+                        Route::get('/delete/{id}', [TranslateController::class, 'destroy'])->middleware('permission:delete_translates')->name('translates-delete');
+                    });
                 // ./Translates
+
+                // Categories
+                    Route::prefix('/categories')->middleware('permission:show_categories')->group(function() {
+                        Route::get('/all', [CategoryController::class, 'index'])->middleware('permission:update_categories')->name('categories-all');
+                        Route::get('/create', [CategoryController::class, 'create'])->middleware('permission:update_categories')->name('categories-create');
+                        Route::post('/store', [CategoryController::class, 'store'])->middleware('permission:create_categories')->name('categories-store');
+                        Route::get('/edit/{id}', [CategoryController::class, 'edit'])->middleware('permission:update_categories')->name('categories-edit');
+                        Route::post('/update/{id}', [CategoryController::class, 'update'])->middleware('permission:update_categories')->name('categories-update');
+                        Route::get('/delete/{id}', [CategoryController::class, 'destroy'])->middleware('permission:delete_categories')->name('categories-delete');
+                    });
+                // ./Categories
 
                 // Profile
                     Route::prefix('/profile')->group(function() {

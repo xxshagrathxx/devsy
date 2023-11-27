@@ -23,13 +23,13 @@ class SettingsSeeder extends Seeder
             'value' => '2023 كل الحقوق محفوظة',
         ],[
             'key' => 'copyrights_en_lnk',
-            'value' => 'Egynozom',
+            'value' => 'Devsy',
         ],[
             'key' => 'copyrights_ar_lnk',
-            'value' => 'ايجي نظم',
+            'value' => 'Devsy',
         ],[
             'key' => 'copyrights_lnk',
-            'value' => 'https://www.egynozom.com/',
+            'value' => 'https://devsy.tech/',
         ],[
             'key' => 'logo',
             'value' => 'logo.png',
@@ -41,7 +41,7 @@ class SettingsSeeder extends Seeder
             'value' => 'contact@dev.net',
         ],[
             'key' => 'contact_us_subject',
-            'value' => 'Mail from Egynozom Contact Us',
+            'value' => 'Mail from Devsy Contact Us',
         ]];
 
         foreach($settings as $setting){

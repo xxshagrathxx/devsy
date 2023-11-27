@@ -27,6 +27,12 @@ class PermissionSeeder extends Seeder
         Permission::create(['name'=>'update_roles']);
         Permission::create(['name'=>'delete_roles']);
 
+        // Categories
+        Permission::create(['name'=>'show_categories']);
+        Permission::create(['name'=>'create_categories']);
+        Permission::create(['name'=>'update_categories']);
+        Permission::create(['name'=>'delete_categories']);
+
         // Translates
         Permission::create(['name'=>'show_translates']);
         Permission::create(['name'=>'create_translates']);
