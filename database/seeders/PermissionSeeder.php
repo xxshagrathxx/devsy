@@ -33,6 +33,12 @@ class PermissionSeeder extends Seeder
         Permission::create(['name'=>'update_categories']);
         Permission::create(['name'=>'delete_categories']);
 
+        // SubCategories
+        Permission::create(['name'=>'show_sub_categories']);
+        Permission::create(['name'=>'create_sub_categories']);
+        Permission::create(['name'=>'update_sub_categories']);
+        Permission::create(['name'=>'delete_sub_categories']);
+
         // Translates
         Permission::create(['name'=>'show_translates']);
         Permission::create(['name'=>'create_translates']);

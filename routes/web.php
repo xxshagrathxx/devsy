@@ -8,6 +8,7 @@ use App\Http\Controllers\core\RoleController;
 use App\Http\Controllers\core\SettingsController;
 use App\Http\Controllers\core\TranslateController;
 use App\Http\Controllers\core\UserController;
+use App\Http\Controllers\SubCategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -148,14 +149,25 @@ Route::group(
 
                 // Categories
                     Route::prefix('/categories')->middleware('permission:show_categories')->group(function() {
-                        Route::get('/all', [CategoryController::class, 'index'])->middleware('permission:update_categories')->name('categories-all');
-                        Route::get('/create', [CategoryController::class, 'create'])->middleware('permission:update_categories')->name('categories-create');
+                        Route::get('/all', [CategoryController::class, 'index'])->middleware('permission:show_categories')->name('categories-all');
+                        Route::get('/create', [CategoryController::class, 'create'])->middleware('permission:create_categories')->name('categories-create');
                         Route::post('/store', [CategoryController::class, 'store'])->middleware('permission:create_categories')->name('categories-store');
                         Route::get('/edit/{id}', [CategoryController::class, 'edit'])->middleware('permission:update_categories')->name('categories-edit');
                         Route::post('/update/{id}', [CategoryController::class, 'update'])->middleware('permission:update_categories')->name('categories-update');
                         Route::get('/delete/{id}', [CategoryController::class, 'destroy'])->middleware('permission:delete_categories')->name('categories-delete');
                     });
                 // ./Categories
+
+                // SubCategories
+                    Route::prefix('/sub_categories')->middleware('permission:show_sub_categories')->group(function() {
+                        Route::get('/all', [SubCategoryController::class, 'index'])->middleware('permission:show_sub_categories')->name('sub_categories-all');
+                        Route::get('/create', [SubCategoryController::class, 'create'])->middleware('permission:create_sub_categories')->name('sub_categories-create');
+                        Route::post('/store', [SubCategoryController::class, 'store'])->middleware('permission:create_sub_categories')->name('sub_categories-store');
+                        Route::get('/edit/{id}', [SubCategoryController::class, 'edit'])->middleware('permission:update_sub_categories')->name('sub_categories-edit');
+                        Route::post('/update/{id}', [SubCategoryController::class, 'update'])->middleware('permission:update_sub_categories')->name('sub_categories-update');
+                        Route::get('/delete/{id}', [SubCategoryController::class, 'destroy'])->middleware('permission:delete_sub_categories')->name('sub_categories-delete');
+                    });
+                // ./SubCategories
 
                 // Profile
                     Route::prefix('/profile')->group(function() {

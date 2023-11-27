@@ -73,11 +73,20 @@
       </li>
     @endif
 
-    @can('show_roles')
+    @can('show_categories')
         <li class="menu-item @yield('categories')">
           <a href="{{ route('categories-all') }}" class="menu-link">
             <i class="fa fa-bolt" aria-hidden="true"></i>&nbsp;&nbsp;
             <div>{{ transWord('Categories') }}</div>
+          </a>
+        </li>
+    @endcan
+
+    @can('show_sub_categories')
+        <li class="menu-item @yield('sub_categories')">
+          <a href="{{ route('sub_categories-all') }}" class="menu-link">
+            <i class="fa fa-file-text" aria-hidden="true"></i>&nbsp;&nbsp;
+            <div>{{ transWord('SubCategories') }}</div>
           </a>
         </li>
     @endcan
